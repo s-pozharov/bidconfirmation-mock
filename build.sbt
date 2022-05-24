@@ -4,7 +4,7 @@ oneJarSettings
 
 name := "edge-bidconfirmation-mock"
 
-version := "1.0-SNAPSHOT"
+version := "1.2-SNAPSHOT"
 
 libraryDependencies ++= {
   val akkaV = "2.5.32"
