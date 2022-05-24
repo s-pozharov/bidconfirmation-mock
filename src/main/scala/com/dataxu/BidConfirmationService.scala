@@ -26,9 +26,12 @@ class BidConfirmationService extends Actor with ActorLogging {
     case HttpRequest(GET, Uri.Path("/x/bcs0"), _, _, _) =>
       sender ! HttpResponse(entity = "OK")
 
+    case HttpRequest(POST, Uri.Path("/x/bcs0"), _, _, _) =>
+      sender ! HttpResponse(entity = "OK")
+
     case HttpRequest(GET, Uri.Path("/stats"), _, _, _) =>
       val client = sender
-      context.actorFor("/user/IO-HTTP/listener-0") ? Http.GetStats onSuccess {
+      context.actorSelection("/user/IO-HTTP/listener-0") ? Http.GetStats onSuccess {
         case x: Stats => client ! statsPresentation(x)
       }
 
